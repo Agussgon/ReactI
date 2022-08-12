@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=}, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Johnny Deep</title>
+</head>
+<body>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+
+    <div id="root">
+
+    </div>
+
+
+      <script type="text/babel"> 
+     
+     let titulos=["Home","About","Carer","Education"];
+
+
+      const Header=function(){
+        let rutas= titulos.map((titulo,index)=> {
+         return  <div className="ruta2" key={index} ><p>{titulo}</p></div>
+        })
+        return <section className="rutas">{titulos}</section>
+     }
+
+
+     
+   const profile={
+        personalInformation:{
+        name:"Johnny",
+        lastName:"Deep",
+        age:60,
+        nationality:"EEUU"},
+        experienceInMovies:["Pirates","Trascendent","scissors hand"],
+        education: ["University of Arts","Univerity of UCLA"],
+        bio: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae, vero iusto soluta ut sunt excepturi. "
+      }
+     
+
+    
+      function Perfil(props){ 
+      let perfil= props.perfil.map((propiedad,index)=>{
+         return (
+          <li  key={index}>{propiedad}</li>
+          )
+         })
+      return <ul>{perfil}</ul>
+     }
+
+     const Title=(props)=>{ return <h4>{props.title}</h4>}
+
+
+     function PersonalInformation(props){
+    
+      return <section>
+                <li>name: {props.personalInformation.name}</li>
+                <li>last name: {props.personalInformation.lastName}</li>
+                <li>age: {props.personalInformation.age}</li>
+                <li>nationality: {props.personalInformation.nationality}</li>
+              
+            </section>
+     }
+
+
+     ReactDOM.render(<div className="container"> 
+                      <Header/>
+                      <section className="containerSection">
+                      <img src="./johnny_depp.jpg"/> 
+                      <div className="containerBio">
+                      <Title title="Personal Information" />
+                      <PersonalInformation personalInformation={profile.personalInformation}/>
+                      <Title title="Experience In Movies" />
+                      <Perfil perfil={profile.experienceInMovies}/>
+                      <Title title="Education" />
+                      <Perfil perfil={profile.education}/>
+                      <Title title="Bio" />
+                      <p> {profile.bio}</p>
+                      </div>
+                      </section>
+                      </div>
+                      , document.getElementById('root')); 
+
+
+
+
+      </script>
+
+
+    
+</body>
+</html>
